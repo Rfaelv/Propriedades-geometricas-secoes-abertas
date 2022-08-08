@@ -144,8 +144,8 @@ buttonCalc.addEventListener('click', () => {
     const deltax = (Ixw2*Iyy2-Iyw2*Ixy2)/(Ixx2*Iyy2-Ixy2**2) 
     const deltay = (Ixw2*Ixy2-Iyw2*Ixx2)/(Ixx2*Iyy2-Ixy2**2) 
 
-    const Ixx3 = (Ixx2 + Iyy2)/2 + 1/2*((Ixx2 - Iyy2)**2 + 4*Ixy2)**(1/2)
-    const Iyy3 = (Ixx2 + Iyy2)/2 - 1/2*((Ixx2 - Iyy2)**2 + 4*Ixy2)**(1/2)
+    const Ixx3 = (Ixx2 + Iyy2)/2 + 1/2*((Ixx2 - Iyy2)**2 + 4*Ixy2**2)**(1/2)
+    const Iyy3 = (Ixx2 + Iyy2)/2 - 1/2*((Ixx2 - Iyy2)**2 + 4*Ixy2**2)**(1/2)
     const Iww3 = Iww2 + deltay*Iyw2 - deltax*Ixw2
 
     const CCx2 = deltax + B[0] 
