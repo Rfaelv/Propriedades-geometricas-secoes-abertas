@@ -157,29 +157,32 @@ buttonCalc.addEventListener('click', () => {
     const CGx3 = Math.cos(fi)*CGx + Math.sin(fi)*CGy
     const CGy3 = - Math.sin(fi)*CGx + Math.cos(fi)*CGy
 
-    const x0 = CGx3-CCx3
-    const y0 = CGy3-CCy3
+    // const x0 = CGx3-CCx3
+    // const y0 = CGy3-CCy3
+
+    const x0 = CGx-CCx2
+    const y0 = CGy-CCy2
 
     const r0 = (Ixx3/A + Iyy3/A + x0**2 + y0**2)**(1/2)
 
     const resultsOutput = document.getElementsByClassName('results')
 
-    resultsOutput[0].innerHTML = 'Área: ' + A.toFixed(2)
-    resultsOutput[1].innerHTML = 'J: ' + J.toFixed(2)
-    resultsOutput[2].innerHTML = 'Ixg: ' + Ixx2.toFixed(2)
-    resultsOutput[3].innerHTML = 'Iyg: ' + Iyy2.toFixed(2)
-    resultsOutput[4].innerHTML = 'Ixyg: ' + Ixy2.toFixed(2)
-    resultsOutput[5].innerHTML = 'xc: ' + CCx3.toFixed(2)
-    resultsOutput[6].innerHTML = 'yc: ' + CCy3.toFixed(2)
-    resultsOutput[7].innerHTML = 'Cw: ' + Iww3.toFixed(2)
-    resultsOutput[8].innerHTML = 'xg: ' + CGx.toFixed(2)
-    resultsOutput[9].innerHTML = 'yg: ' + CGy.toFixed(2)
-    resultsOutput[10].innerHTML = 'I1: ' + Ixx3.toFixed(2)
-    resultsOutput[11].innerHTML = 'I2: ' + Iyy3.toFixed(2)
-    resultsOutput[12].innerHTML = 'φ: ' + fi.toFixed(2)
-    resultsOutput[13].innerHTML = 'x0: ' + x0.toFixed(2)
-    resultsOutput[14].innerHTML = 'y0: ' + y0.toFixed(2)
-    resultsOutput[15].innerHTML = 'r0: ' + r0.toFixed(2)
+    resultsOutput[0].innerHTML = 'Área : ' + A.toFixed(2)
+    resultsOutput[1].innerHTML = 'J : ' + J.toFixed(2)
+    resultsOutput[2].innerHTML = 'I'+"<sub>xg</sub>"+' : ' + Ixx2.toFixed(2)
+    resultsOutput[3].innerHTML = 'I'+"<sub>yg</sub>"+' : ' + Iyy2.toFixed(2)
+    resultsOutput[4].innerHTML = 'I'+"<sub>xyg</sub>"+' : ' + Ixy2.toFixed(2)
+    resultsOutput[5].innerHTML = 'x'+"<sub>c</sub>"+' : ' + CCx2.toFixed(2)
+    resultsOutput[6].innerHTML = 'y'+"<sub>c</sub>"+' : ' + CCy2.toFixed(2)
+    resultsOutput[7].innerHTML = 'C'+"<sub>w</sub>"+' : ' + Iww3.toFixed(2)
+    resultsOutput[8].innerHTML = 'x'+"<sub>g</sub>"+' : ' + CGx.toFixed(2)
+    resultsOutput[9].innerHTML = 'y'+"<sub>g</sub>"+' : ' + CGy.toFixed(2)
+    resultsOutput[10].innerHTML = 'I'+"<sub>1</sub>"+' : ' + Ixx3.toFixed(2)
+    resultsOutput[11].innerHTML = 'I'+"<sub>2</sub>"+' : ' + Iyy3.toFixed(2)
+    resultsOutput[12].innerHTML = 'φ : ' + fi.toFixed(2) + "°"
+    resultsOutput[13].innerHTML = 'x'+"<sub>0</sub>"+' : ' + x0.toFixed(2)
+    resultsOutput[14].innerHTML = 'y'+"<sub>0</sub>"+' : ' + y0.toFixed(2)
+    resultsOutput[15].innerHTML = 'r'+"<sub>0</sub>"+' : ' + r0.toFixed(2)
 
     document.getElementById('results').style.display = 'flex'
 
