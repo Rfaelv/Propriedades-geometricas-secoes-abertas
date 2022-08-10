@@ -157,8 +157,8 @@ buttonCalc.addEventListener('click', () => {
     const CGx3 = Math.cos(fi)*CGx + Math.sin(fi)*CGy
     const CGy3 = - Math.sin(fi)*CGx + Math.cos(fi)*CGy
 
-    const x0 = CGx3-CCx3
-    const y0 = CGy3-CCy3
+    const x0 = CCx3 - CGx3
+    const y0 = CCy3 - CGy3
 
     // const x0 = CGx-CCx2
     // const y0 = CGy-CCy2
