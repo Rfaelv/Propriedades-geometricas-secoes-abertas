@@ -70,10 +70,6 @@ buttonCalc.addEventListener('click', () => {
         Iy1 += b*t/2*(xi + xj)
         Iw1 += b*t/2*(wi + wj)
 
-        console.log("Iw1 = " + b + "*" + t + "/2*(" + wi +"+" + wj +")")
-        console.log(Iw1)
-
-
         Ixx1 += b*t/3*(yi**2 + yj**2 + yi*yj)
         Iyy1 += b*t/3*(xi**2 + xj**2 + xi*xj)
         Iww1 += b*t/3*(wi**2 + wj**2 + wi*wj)
@@ -85,15 +81,10 @@ buttonCalc.addEventListener('click', () => {
         J += 1/3*b*t**3
         
     }
-
-    console.log("Iww1 = " + Iww1)
     
     const CGx = Iy1/A
     const CGy = Ix1/A
     const w01 = Iw1/A
-
-    // console.log("w0 = " +  w01)
-    // console.log(y01)
 
     var Ix2 = 0
     var Iy2 = 0
@@ -104,7 +95,6 @@ buttonCalc.addEventListener('click', () => {
     var Ixy2 = 0
     var Ixw2 = 0
     var Iyw2 = 0
-    // B = [B[0], B[1]]
 
     for (let i = 1; i < x.length; i++) {
 
@@ -118,21 +108,13 @@ buttonCalc.addEventListener('click', () => {
         const wi = w1[i-1] - w01
         const wj = w1[i] - w01
 
-        console.log("wi = " + wi)
-        console.log("wj = " + wj)
-
         Ix2 += b*t/2*(yi + yj)
         Iy2 += b*t/2*(xi + xj)
         Iw2 += b*t/2*(wi + wj)
 
-        // console.log(Ix2)
-
         Ixx2 += b*t/3*(yi**2 + yj**2 + yi*yj)
         Iyy2 += b*t/3*(xi**2 + xj**2 + xi*xj)
         Iww2 += b*t/3*(wi**2 + wj**2 + wi*wj)
-
-        // console.log(b + "*" + t + "/3*(" + yi + "**2 + " + yj + "**2 + " + yi + "*" +yj)
-        // console.log(Ixx2)
 
         Ixy2 += b*t/3*(xi*yi + xj*yj + xi*yj/2 + xj*yi/2)
         Ixw2 += b*t/3*(yi*wi + yj*wj + yi*wj/2 + yj*wi/2)
@@ -140,7 +122,7 @@ buttonCalc.addEventListener('click', () => {
         
     }
 
-    const fi = Math.atan(-2*Ixy2/(Ixx2-Iyy2))/2*180/Math.PI
+    const fi = Math.atan(-2*Ixy2/(Ixx2-Iyy2))
     const deltax = (Ixw2*Iyy2-Iyw2*Ixy2)/(Ixx2*Iyy2-Ixy2**2) 
     const deltay = (Ixw2*Ixy2-Iyw2*Ixx2)/(Ixx2*Iyy2-Ixy2**2) 
 
@@ -160,9 +142,6 @@ buttonCalc.addEventListener('click', () => {
     const x0 = CCx3 - CGx3
     const y0 = CCy3 - CGy3
 
-    // const x0 = CGx-CCx2
-    // const y0 = CGy-CCy2
-
     const r0 = (Ixx3/A + Iyy3/A + x0**2 + y0**2)**(1/2)
 
     const resultsOutput = document.getElementsByClassName('results')
@@ -179,21 +158,13 @@ buttonCalc.addEventListener('click', () => {
     resultsOutput[9].innerHTML = 'y'+"<sub>g</sub>"+' : ' + CGy.toFixed(2)
     resultsOutput[10].innerHTML = 'I'+"<sub>1</sub>"+' : ' + Ixx3.toFixed(2)
     resultsOutput[11].innerHTML = 'I'+"<sub>2</sub>"+' : ' + Iyy3.toFixed(2)
-    resultsOutput[12].innerHTML = 'φ : ' + fi.toFixed(2) + "°"
+    resultsOutput[12].innerHTML = 'φ : ' + (fi/2*180/Math.PI).toFixed(2) + "°"
     resultsOutput[13].innerHTML = 'x'+"<sub>0</sub>"+' : ' + x0.toFixed(2)
     resultsOutput[14].innerHTML = 'y'+"<sub>0</sub>"+' : ' + y0.toFixed(2)
     resultsOutput[15].innerHTML = 'r'+"<sub>0</sub>"+' : ' + r0.toFixed(2)
 
     document.getElementById('results').style.display = 'flex'
 
-    // console.log("A = " + A)
-    // console.log("xg = " + CGx)
-    // console.log("yg = " + CGy)
-    // console.log("Ix = " + Ixx3)
-    // console.log("Iy = " + Iyy3)
-    // console.log("Cw = " + Iww3)
-    // console.log("C.C = " + CCx3 + ", " + CCy3)
-    // console.log("fi = "+fi)
 })
 
 function calculeArea(v1, v2) {
