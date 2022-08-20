@@ -34,6 +34,10 @@ buttonCalc.addEventListener('click', () => {
     const y = document.getElementsByClassName("y")
     const tick = document.getElementsByClassName("t")
 
+    if (inputIsNotValid([x, y, tick])) {
+        return
+    }
+
     var A = 0
     var wAcumulado = 0
     var w1 = [0]
@@ -122,7 +126,7 @@ buttonCalc.addEventListener('click', () => {
         
     }
 
-    const fi = Math.atan(-2*Ixy2/(Ixx2-Iyy2))
+    const fi = Math.atan(-2*Ixy2/(Ixx2-Iyy2))/2
     const deltax = (Ixw2*Iyy2-Iyw2*Ixy2)/(Ixx2*Iyy2-Ixy2**2) 
     const deltay = (Ixw2*Ixy2-Iyw2*Ixx2)/(Ixx2*Iyy2-Ixy2**2) 
 
@@ -158,7 +162,7 @@ buttonCalc.addEventListener('click', () => {
     resultsOutput[9].innerHTML = 'y'+"<sub>g</sub>"+' : ' + CGy.toFixed(2)
     resultsOutput[10].innerHTML = 'I'+"<sub>1</sub>"+' : ' + Ixx3.toFixed(2)
     resultsOutput[11].innerHTML = 'I'+"<sub>2</sub>"+' : ' + Iyy3.toFixed(2)
-    resultsOutput[12].innerHTML = 'φ : ' + (fi/2*180/Math.PI).toFixed(2) + "°"
+    resultsOutput[12].innerHTML = 'φ : ' + (fi*180/Math.PI).toFixed(2) + "°"
     resultsOutput[13].innerHTML = 'x'+"<sub>0</sub>"+' : ' + x0.toFixed(2)
     resultsOutput[14].innerHTML = 'y'+"<sub>0</sub>"+' : ' + y0.toFixed(2)
     resultsOutput[15].innerHTML = 'r'+"<sub>0</sub>"+' : ' + r0.toFixed(2)
@@ -176,4 +180,17 @@ function calculeArea(v1, v2) {
                     v1[0]*v2[1] - v1[1]*v2[0] ]
     
     return (v1xv2[0]**2 + v1xv2[1]**2 + v1xv2[2]**2)**(1/2)*v1xv2[2]/Math.abs(v1xv2[2])
+}
+
+function inputIsNotValid(inputGroups) {
+    for (let inputs of inputGroups) {
+        for (let input of inputs) {
+            if (input.value == "") {
+                window.alert("Por favor, preencha todos os campos.")
+                input.focus()
+                return true
+            }
+        }
+    }
+    return false
 }
